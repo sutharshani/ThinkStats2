@@ -21,7 +21,8 @@ def Mode(hist):
 
     returns: value from Hist
     """
-    return 0
+    freq, value = max([(freq, value) for value, freq in hist.Items()])
+    return value
 
 
 def AllModes(hist):
@@ -31,7 +32,8 @@ def AllModes(hist):
 
     returns: iterator of value-freq pairs
     """
-    return []
+    sortedMOdes = sorted(hist.Items(), key=itemgetter(1), reverse=True)
+    return sortedMOdes
 
 
 def main(script):
@@ -41,6 +43,25 @@ def main(script):
     """
     live, firsts, others = first.MakeFrames()
     hist = thinkstats2.Hist(live.prglngth)
+
+    mean1 = firsts.totalwgt_lb.mean()
+    mean2 = others.totalwgt_lb.mean()
+
+    var1 = firsts.totalwgt_lb.var()
+    var2 = others.totalwgt_lb.var()
+
+    print('Mean Weight')
+    print('First babies', mean1)
+    print('Others babies', mean2)
+
+    print('Variance in Weight')
+    print('First babies', var1)
+    print('Others babies', var2)
+
+    print('Difference in lbs', mean1 - mean2)
+
+    cohen_d = thinkstats2.CohenEffectSize(firsts.totalwgt_lb, others.totalwgt_lb)
+    print('Cohen d', cohen_d)
 
     # test Mode    
     mode = Mode(hist)

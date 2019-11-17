@@ -32,7 +32,8 @@ def AllModes(hist):
 
     returns: iterator of value-freq pairs
     """
-    return sorted(hist.Items(), key=itemgetter(1), reverse=True)
+    sortedMOdes = sorted(hist.Items(), key=itemgetter(1), reverse=True)
+    return sortedMOdes
 
 
 def WeightDifference(live, firsts, others):
@@ -81,11 +82,11 @@ def main(script):
     # test Mode    
     mode = Mode(hist)
     print('Mode of preg length', mode)
-    assert(mode == 39)
+    assert mode == 39, mode
 
     # test AllModes
     modes = AllModes(hist)
-    assert(modes[0][1] == 4693)
+    assert modes[0][1] == 4693, modes[0][1]
 
     for value, freq in modes[:5]:
         print(value, freq)

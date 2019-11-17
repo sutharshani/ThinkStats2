@@ -174,7 +174,7 @@ def SimulateSample(lam=2, n=10, m=1000):
 
     # plot the CDF
     thinkplot.Cdf(cdf)
-    thinkplot.Save(root='estimation2',
+    thinkplot.Config(root='estimation2',
                    xlabel='estimate',
                    ylabel='CDF',
                    title='Sampling distribution')

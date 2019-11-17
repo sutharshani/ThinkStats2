@@ -12,7 +12,6 @@ import sys
 
 import nsfg
 import thinkstats2
-from collections import defaultdict
 
 
 def ReadFemResp(dct_file='2002FemResp.dct',
